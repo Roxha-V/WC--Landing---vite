@@ -1,34 +1,110 @@
-import React from "react";
+import React, { useState } from "react";
+import ProjectModal from "./ProjectModal";
 
-const About = () => {
+const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Music Prism",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "/placeholder.svg?height=400&width=800",
+      roles: ["Front-end", "Back-end"],
+      timeline: "Sep - Nov 2024",
+      frontendTech: "React Native, Expo",
+      backendTech: "Django, Python",
+      siteUrl: "https://example.com",
+    },
+    {
+      id: 2,
+      title: "Proyecto 2",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "/placeholder.svg?height=400&width=800",
+      roles: ["Front-end"],
+      timeline: "Jun - Aug 2024",
+      frontendTech: "React, Next.js",
+      backendTech: "Node.js, Express",
+      siteUrl: "https://example.com",
+    },
+    {
+      id: 3,
+      title: "Proyecto 3",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "/placeholder.svg?height=400&width=800",
+      roles: ["Full-stack"],
+      timeline: "Mar - May 2024",
+      frontendTech: "Vue.js",
+      backendTech: "Firebase",
+      siteUrl: "https://example.com",
+    },
+    {
+      id: 4,
+      title: "Proyecto 4",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "/placeholder.svg?height=400&width=800",
+      roles: ["Front-end"],
+      timeline: "Jan - Feb 2024",
+      frontendTech: "React, TypeScript",
+      backendTech: "AWS Lambda",
+      siteUrl: "https://example.com",
+    },
+    {
+      id: 5,
+      title: "Proyecto 5",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "/placeholder.svg?height=400&width=800",
+      roles: ["Back-end"],
+      timeline: "Dec 2023",
+      frontendTech: "Angular",
+      backendTech: "Java Spring Boot",
+      siteUrl: "https://example.com",
+    },
+  ];
+
   return (
-    <section id="sobre-wannacode" className="py-20 bg-gray-100 relative">
-      <div className="absolute inset-0 overflow-hidden">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 w-full h-20 text-white"
-          fill="currentColor"
-        >
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-        </svg>
-      </div>
+    <section id="proyectos" className="min-h-screen flex items-center py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12">Sobre Wannacode</h2>
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          <p className="text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p className="text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+        <h2 className="text-4xl font-bold mb-6 text-white">
+          Nuestros proyectos
+        </h2>
+        <p className="text-white/90 mb-12 max-w-2xl">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className={`group cursor-pointer bg-white/10 rounded-lg overflow-hidden ${
+                index === 0 ? "md:col-span-2" : ""
+              }`}
+              onClick={() => setSelectedProject(project)}
+            >
+              <div className="aspect-video relative">
+                <img
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                  <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    Ver proyecto
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="mt-16 bg-gray-200 aspect-video max-w-4xl mx-auto rounded-lg"></div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };
 
-export default About;
+export default Projects;

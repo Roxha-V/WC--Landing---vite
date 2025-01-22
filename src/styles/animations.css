@@ -1,0 +1,41 @@
+/* Glitch Animation */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: -2px 0 #ff8a3d, 2px 2px #417430;
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px -2px #ff8a3d, -2px 2px #417430;
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    text-shadow: 2px 0 #ff8a3d, -2px -2px #417430;
+  }
+  60% {
+    transform: translate(2px, 2px);
+    text-shadow: -2px 2px #ff8a3d, 2px -2px #417430;
+  }
+  80% {
+    transform: translate(2px, -2px);
+    text-shadow: 2px 2px #ff8a3d, -2px 0 #417430;
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: -2px 0 #ff8a3d, 2px 2px #417430;
+  }
+}
+
+.glitch-text {
+  font-size: 7rem;
+  color: #ff8a3d;
+  position: relative;
+  display: inline-block;
+  animation: glitch 5s infinite;
+}
+
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 4rem;
+  }
+}

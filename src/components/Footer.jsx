@@ -1,36 +1,49 @@
 import React from "react";
+import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-red-500 text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start">
-          <div>
-            <h3 className="text-3xl font-bold mb-6">Somos Wannacode</h3>
-            <div className="space-y-2">
-              <a
-                href="https://linkedin.com"
-                className="block hover:text-gray-300"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="mailto:wannacode@gmail.com"
-                className="block hover:text-gray-300"
-              >
-                wannacode@gmail.com
-              </a>
-            </div>
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:wannacode@gmail.com"
+              className="flex items-center gap-2 hover:text-gray-300"
+            >
+              <Mail size={20} />
+              <span>wannacode@gmail.com</span>
+            </a>
+            <span className="hidden md:inline">|</span>
+            <a
+              href="tel:+543513476899"
+              className="flex items-center gap-2 hover:text-gray-300"
+            >
+              <Phone size={20} />
+              <span>(+54) 351 347689</span>
+            </a>
           </div>
-          <div className="mt-8 md:mt-0">
-            <p className="text-gray-400">Productos</p>
-            <p className="mt-2">Desarrollo de aplicaciones web</p>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300"
+            >
+              <Instagram size={24} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300"
+            >
+              <Linkedin size={24} />
+            </a>
           </div>
-          <div className="mt-8 md:mt-0">
-            <p className="text-gray-400">Ubicación</p>
-            <p className="mt-2">Córdoba (Argentina)</p>
-            <p className="text-5xl font-bold mt-4">2025</p>
-          </div>
+
+          <div className="text-xl font-light">Wannacode 2025</div>
         </div>
       </div>
     </footer>
